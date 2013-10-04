@@ -1,0 +1,162 @@
+//
+// plates
+// --------------------------------------------------
+
+// .plate-open      - body class for killing the scroll
+// .plate           - container to scroll within
+// .plate-dialog    - positioning shell for the actual plate
+// .plate-content   - actual plate w/ bg and corners and shit
+
+$zindex-plate-background:  1020 !default;
+$zindex-plate:             1030 !default;
+
+// plates
+// -------------------------
+$plate-inner-padding:         20px !default;
+
+$plate-title-padding:         15px !default;
+$plate-title-line-height:     $line-height-base !default;
+
+$plate-content-bg:                             #fff !default;
+$plate-content-border-color:                   rgba(0,0,0,.2) !default;
+$plate-content-fallback-border-color:          #999 !default;
+
+$plate-backdrop-bg:           #000 !default;
+$plate-header-border-color:   #e5e5e5 !default;
+$plate-footer-border-color:   $plate-header-border-color !default;
+
+// Container that the plate scrolls within
+.plate {
+  display: none;
+  outline: none;
+  position: relative;
+}
+
+// Shell div to position the plate with bottom padding
+.plate-dialog {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  z-index: ($zindex-plate-background + 10);
+}
+
+// Actual plate
+.plate-content {
+  position: relative;
+  background-color: $plate-content-bg;
+  border: 1px solid $plate-content-fallback-border-color; //old browsers fallback (ie8 etc)
+  border: 1px solid $plate-content-border-color;
+  border-radius: $border-radius-large;
+  @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+  background-clip: padding-box;
+  // Remove focus outline from opened plate
+  outline: none;
+}
+
+// plate header
+// Top section of the plate w/ title and dismiss
+.plate-header {
+  padding: $plate-title-padding;
+  border-bottom: 1px solid $plate-header-border-color;
+  min-height: ($plate-title-padding + $plate-title-line-height);
+  background: $body-bg;
+  z-index: ($zindex-plate-background + 11);
+}
+// Close icon
+.plate-header {
+  .close {
+    margin-top: -2px;
+  }
+
+  a[data-resize] {
+    @extend .glyphicon;
+    @extend .glyphicon-resize-full;
+    color: $close-color;
+    @include opacity(0.2);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 16px;
+    margin-right: 10px;
+    outline: none;
+
+    &:hover {
+      @include opacity(0.5);
+    }
+  }
+}
+
+.plate-sticky-header {
+  .plate-header {
+    border-bottom: 1px solid $plate-content-fallback-border-color; //old browsers fallback (ie8 etc)
+    border-bottom: 1px solid $plate-content-border-color;
+    @include box-shadow(0 -3px 9px rgba(0,0,0,.5));
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    a[data-resize] {
+      @extend .glyphicon;
+      @extend .glyphicon-resize-small;
+      font-size: 13px;
+      line-height: 16px;
+    }
+  }
+}
+
+// Title text within header
+.plate-title {
+  margin: 0;
+  line-height: $plate-title-line-height;
+}
+
+// plate body
+// Where all plate content resides (sibling of .plate-header and .plate-footer)
+.plate-body {
+  position: relative;
+  padding: $plate-inner-padding;
+}
+
+// Footer (for actions)
+.plate-footer {
+  margin-top: 15px;
+  padding: ($plate-inner-padding - 1) $plate-inner-padding $plate-inner-padding;
+  text-align: right; // right align buttons
+  border-top: 1px solid $plate-footer-border-color;
+  @include clearfix(); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+    margin-left: 5px;
+    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+    margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+    margin-left: 0;
+  }
+}
+
+// Scale up the plate
+@media screen and (min-width: $screen-tablet) {
+
+  .plate-dialog {
+    left: 50%;
+    right: auto;
+    width: 600px;
+    // padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .plate-content {
+    @include box-shadow(0 5px 15px rgba(0,0,0,.5));
+  }
+
+  .plate-sticky-header {
+    .plate-header {
+      width: 598px;
+    }
+  }
+
+}
