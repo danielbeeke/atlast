@@ -30,6 +30,7 @@ $plate-footer-border-color:   $plate-header-border-color !default;
   display: none;
   outline: none;
   position: relative;
+  z-index: ($zindex-plate-background);
 }
 
 // Shell div to position the plate with bottom padding

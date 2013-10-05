@@ -173,8 +173,14 @@
           this.$element.find('.plate-content').css('padding-top', 0)
         }
       }, this))
+
+      $(window).on('resize', $.proxy(function (e) {
+        var windowMinusPlateHeader = $(window).height() - $('.plate-header', that.$element).outerHeight()
+        $('.plate-dialog', that.$element).css('margin-top', windowMinusPlateHeader)
+      }, this))
+
     } else if (!this.isShown) {
-      $(window).off('scroll')
+      $(window).off('scroll').off('resize')
     }
   }
 
