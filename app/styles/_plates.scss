@@ -147,7 +147,8 @@ $plate-footer-border-color:   $plate-header-border-color !default;
     left: 50%;
     right: auto;
     width: 600px;
-    // padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
     padding-bottom: 30px;
   }
   .plate-content {

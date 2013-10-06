@@ -13,7 +13,8 @@ require.config({
         bootstrapTab: '../bower_components/sass-bootstrap/js/tab',
         bootstrapTooltip: '../bower_components/sass-bootstrap/js/tooltip',
         bootstrapTransition: '../bower_components/sass-bootstrap/js/transition',
-        atlastPlate: 'plate'
+        leaflet: '../bower_components/leaflet/dist/leaflet',
+        twig: '../bower_components/twig.js/twig'
     },
     shim: {
         bootstrapAffix: {
@@ -52,15 +53,25 @@ require.config({
         bootstrapTransition: {
             deps: ['jquery']
         },
-        atlastPlate:{
+        plate: {
             deps: ['jquery']
+        },
+        map: {
+            deps: ['jquery', 'leaflet']
+        },
+        twigloader: {
+            deps: ['jquery', 'twig']
+        },
+        bootstrap: {
+            deps: ['jquery', 'twigloader']
         }
     }
 });
 
-require(['app', 'jquery', 'bootstrapModal', 'atlastPlate'], function (app, $) {
+require(['jquery', 'bootstrap'], function ($, bootstrap) {
     'use strict';
-    // use app here
-    console.log(app);
-    console.log('Running jQuery %s', $().jquery);
+
+    bootstrap.init(function() {
+        alert('test')
+    })
 });

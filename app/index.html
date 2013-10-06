@@ -1,98 +1,33 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html manifest="/cache.manifest" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html manifest="/cache.manifest" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html manifest="/cache.manifest" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html manifest="/cache.manifest" class="no-js"> <!--<![endif]-->
+<html manifest="/cache.manifest" class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>atlast</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/leaflet/dist/leaflet.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
-
-         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-         <!--[if lte IE 8]>
-             <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
-         <![endif]-->
-
 
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
     </head>
+
     <body>
-        <div class="container floating-main-content">
 
-                  <!-- Button trigger modal -->
-                  <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Launch demo modal</a>
-                  <!-- Button trigger plate -->
-                  <a data-toggle="plate" href="#myplate" class="btn btn-primary btn-lg">Launch demo plate</a>
-        </div>
-<div id="map"></div>
+    <div id="progress"></div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Modal title</h4>
-        </div>
-        <div class="modal-body">
-<ul class="nav nav-pills nav-stacked">
-  <li class="active"><a href="#">Home</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-  <li><a href="#">Profile</a></li>
-  <li><a href="#">Messages</a></li>
-</ul>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-
-
-  <!-- plate -->
-  <div class="plate fade" id="myplate" tabindex="-1" role="dialog" aria-labelledby="myplateLabel" aria-hidden="true">
-    <div class="plate-dialog">
-      <div class="plate-content">
-        <div class="plate-header">
-          <button type="button" class="close" data-dismiss="plate" aria-hidden="true">&times;</button>
-          <a href="#" class="pull-right" data-resize="plate" aria-hidden="true"></a>
-          <h4 class="plate-title">plate title</h4>
-        </div>
-        <div class="plate-body">
-          <p>Proin nisi metus, malesuada et nunc ac, eleifend ultrices sem. Etiam elit velit, lacinia cursus pretium ac, luctus at risus. Aliquam erat volutpat. Aenean sodales, risus a adipiscing tempor, velit purus consectetur dolor, eu venenatis purus nibh et arcu. Etiam commodo elit quis orci imperdiet, eu hendrerit turpis condimentum. Etiam sed sagittis orci. Sed pretium dolor nec nulla pharetra, vel volutpat ante adipiscing. Phasellus accumsan odio libero, ut condimentum massa tristique vitae. Donec malesuada dui vitae laoreet ullamcorper. In nec mi ullamcorper, porttitor nisi quis, adipiscing eros.</p>
-          <p>
-          Etiam ultrices est iaculis mi lobortis, eget tincidunt justo vulputate. Quisque nec porttitor lacus. Sed vulputate lorem id luctus scelerisque. Duis rutrum urna tristique nibh consequat, non laoreet neque convallis. Aliquam rhoncus semper orci. Sed vel mollis massa. Nullam aliquet felis vel neque mattis elementum. Etiam vulputate turpis sed libero varius, luctus euismod velit pellentesque. Phasellus facilisis est vel est malesuada, quis mattis ligula sagittis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut dignissim leo et eros condimentum, vel condimentum odio auctor. Aenean luctus velit in libero dictum congue. Aliquam commodo nec sem non porta. Etiam non neque a diam convallis consectetur.</p>
-          <p>Proin nisi metus, malesuada et nunc ac, eleifend ultrices sem. Etiam elit velit, lacinia cursus pretium ac, luctus at risus. Aliquam erat volutpat. Aenean sodales, risus a adipiscing tempor, velit purus consectetur dolor, eu venenatis purus nibh et arcu. Etiam commodo elit quis orci imperdiet, eu hendrerit turpis condimentum. Etiam sed sagittis orci. Sed pretium dolor nec nulla pharetra, vel volutpat ante adipiscing. Phasellus accumsan odio libero, ut condimentum massa tristique vitae. Donec malesuada dui vitae laoreet ullamcorper. In nec mi ullamcorper, porttitor nisi quis, adipiscing eros.</p>
-          <p>
-          Etiam ultrices est iaculis mi lobortis, eget tincidunt justo vulputate. Quisque nec porttitor lacus. Sed vulputate lorem id luctus scelerisque. Duis rutrum urna tristique nibh consequat, non laoreet neque convallis. Aliquam rhoncus semper orci. Sed vel mollis massa. Nullam aliquet felis vel neque mattis elementum. Etiam vulputate turpis sed libero varius, luctus euismod velit pellentesque. Phasellus facilisis est vel est malesuada, quis mattis ligula sagittis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut dignissim leo et eros condimentum, vel condimentum odio auctor. Aenean luctus velit in libero dictum congue. Aliquam commodo nec sem non porta. Etiam non neque a diam convallis consectetur.</p>
-        </div>
-      </div><!-- /.plate-content -->
-    </div><!-- /.plate-dialog -->
-  </div><!-- /.plate -->
-
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/jquery.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
-
-        <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-
-        <!-- build:js scripts/main.js -->
-        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
