@@ -6,6 +6,8 @@ define(['twigloader','leaflet'], function (twigloader, L) {
       init: function () {
         var instance = JSON.parse(localStorage.getItem('instance'))
 
+        console.log(instance)
+
         var atlastMap = L.map('map', {
           attributionControl: false,
           zoomControl: false,

@@ -3,7 +3,7 @@
   <div class="swiper-wrapper">
     {% for id, photo in data %}
       <div class="swiper-slide">
-        <img class="swiper-image" src="{{ photo.small }}">
+        <img class="swiper-image" title="{{ photo.title }}" data-large="{{ photo.large }}" src="{{ photo.small }}">
       </div>
     {% endfor %}
   </div>

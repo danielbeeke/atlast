@@ -31,6 +31,9 @@ $plate-footer-border-color:   $plate-header-border-color !default;
   outline: none;
   position: relative;
   z-index: ($zindex-plate-background);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Shell div to position the plate with bottom padding
@@ -161,5 +164,12 @@ $plate-footer-border-color:   $plate-header-border-color !default;
       width: 598px;
     }
   }
+}
 
+@media screen and (min-width: 1200px) {
+  .plate-dialog, .plate {
+    left: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

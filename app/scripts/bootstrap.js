@@ -14,10 +14,10 @@ define(['twigloader'], function (twigloader) {
         }))
 
         if (timestamp) {
-          var url = 'http://atlast.dev/api/' + requirejs.s.contexts._.config.atlast.slug + '/' + timestamp;
+          var url = 'http://192.168.0.101/api/' + requirejs.s.contexts._.config.atlast.slug + '/' + timestamp;
         }
         else {
-          var url = 'http://atlast.dev/api/' + requirejs.s.contexts._.config.atlast.slug;
+          var url = 'http://192.168.0.101/api/' + requirejs.s.contexts._.config.atlast.slug;
         }
 
         $.ajax({
