@@ -27,6 +27,7 @@ define(['twigloader','leaflet'], function (twigloader, L) {
                   html: twigloader.get('icon', {
                     title: location.title,
                     icon: location.icon,
+                    color: location.color
                   })
                 });
 
@@ -38,6 +39,8 @@ define(['twigloader','leaflet'], function (twigloader, L) {
                   $('body').append(twigloader.get('plate', {
                     title: location.title,
                     content: location.content,
+                    color: location.color,
+                    icon: location.icon
                   }))
 
                   $('#plate').plate('show')

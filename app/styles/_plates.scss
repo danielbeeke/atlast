@@ -57,6 +57,7 @@ $plate-footer-border-color:   $plate-header-border-color !default;
 // plate header
 // Top section of the plate w/ title and dismiss
 .plate-header {
+  border-top: 2px solid transparent;
   padding: $plate-title-padding;
   border-bottom: 1px solid $plate-header-border-color;
   min-height: ($plate-title-padding + $plate-title-line-height);

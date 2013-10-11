@@ -2,10 +2,10 @@
   <div class="plate fade" id="plate" tabindex="-1" role="dialog">
     <div class="plate-dialog">
       <div class="plate-content">
-        <div class="plate-header">
+        <div class="plate-header" {% if color %} style="border-top-color: {{ color }};" {% endif %}>
           <button type="button" class="close" data-dismiss="plate" aria-hidden="true">&times;</button>
           <a href="#" class="pull-right" data-resize="plate" aria-hidden="true"></a>
-          <h4 class="plate-title">{{ title }}</h4>
+          <h4 class="plate-title">{% if icon %}<i style="color: {{ color }};" class="{{ icon }}"></i>{% endif %} {{ title }}</h4>
         </div>
         <div class="plate-body">
           {{ content }}

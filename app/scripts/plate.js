@@ -95,7 +95,7 @@
 
   }
 
-  plate.prototype.hide = function (e) {
+  plate.prototype.hide = function (e, callback) {
     if (e) e.preventDefault()
 
     $('html, body').animate({ scrollTop: "0px" });
@@ -122,7 +122,9 @@
       this.$element
         .one($.support.transition.end, $.proxy(this.hideplate, this))
         .emulateTransitionEnd(300) :
-      this.hideplate()
+      this.hideplate(function () {
+        callback()
+      })
   }
 
   plate.prototype.enforceFocus = function () {
@@ -186,12 +188,13 @@
     }
   }
 
-  plate.prototype.hideplate = function () {
+  plate.prototype.hideplate = function (callback) {
     var that = this
     this.$element.hide()
     this.$element.removeClass('plate-sticky-header')
     this.$element.find('.plate-content').css('padding-top', 0)
     this.$element.trigger('hidden.bs.plate')
+    calback()
   }
 
 

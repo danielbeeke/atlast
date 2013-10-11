@@ -1,0 +1,24 @@
+.atlast-icon {
+  position: relative;
+  .icon-map-marker {
+    font-size: 40px;
+    position: absolute;
+    margin-left: -3px;
+    margin-top: -3px;
+    @include text-shadow(0 0 4px #FFFFFF, 0 0 4px #FFFFFF, 0 0 4px #FFFFFF);
+  }
+
+  .icon-circle {
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+  }
+
+  .marker {
+    top: 3px;
+    margin-left: 3px;
+    color: white;
+    position: relative;
+    z-index: 2;
+  }
+}
