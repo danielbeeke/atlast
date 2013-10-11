@@ -65,13 +65,17 @@ require.config({
         bootstrap: {
             deps: ['jquery', 'twigloader']
         }
+    },
+    atlast: {
+        slug: 'admin1',
+        mapUrl: 'http://{s}.tile.cloudmade.com/d4fc77ea4a63471cab2423e66626cbb6/997/256/{z}/{x}/{y}.png'
     }
 });
 
-require(['jquery', 'bootstrap'], function ($, bootstrap) {
+require(['jquery', 'bootstrap', 'map'], function ($, bootstrap, map) {
     'use strict';
 
     bootstrap.init(function() {
-        alert('test')
+        map.init()
     })
 });
