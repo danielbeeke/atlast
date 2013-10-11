@@ -7,7 +7,9 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.10.2",
     "font-awesome": "~3.2.1",
-    "jquery-once": "~1.2.6"
+    "jquery-once": "~1.2.6",
+    "owlcarousel": "*",
+    "swiper": "*"
   },
   "devDependencies": {}
 }

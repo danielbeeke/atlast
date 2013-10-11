@@ -15,7 +15,8 @@ require.config({
         bootstrapTransition: '../bower_components/sass-bootstrap/js/transition',
         leaflet: '../bower_components/leaflet/dist/leaflet',
         twig: '../bower_components/twig.js/twig',
-        once: '../bower_components/jquery-once/jquery.once'
+        once: '../bower_components/jquery-once/jquery.once',
+        swiper: '../bower_components/swiper/dist/idangerous.swiper-2.2'
     },
     shim: {
         bootstrapAffix: {
@@ -64,7 +65,7 @@ require.config({
             deps: ['jquery', 'twig']
         },
         bootstrap: {
-            deps: ['jquery', 'twigloader', 'bootstrapModal', 'once', 'plate']
+            deps: ['jquery', 'twigloader', 'bootstrapModal', 'once', 'plate', 'swiper']
         }
     },
     atlast: {

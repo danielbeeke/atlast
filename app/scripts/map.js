@@ -43,6 +43,15 @@ define(['twigloader','leaflet'], function (twigloader, L) {
                     icon: location.icon
                   }))
 
+                  if (location.plugins) {
+                    $.each(location.plugins, function (plugin, data) {
+                      var pluginContent = twigloader.get(plugin, { data: data })
+                      $('.plate-body').append(pluginContent)
+                    });
+                  }
+
+                  $('body').trigger('plate_new_content', [location]);
+
                   $('#plate').plate('show')
                 });
               }

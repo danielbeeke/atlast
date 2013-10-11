@@ -1,0 +1,11 @@
+{% if data %}
+<div class="swiper-container photos-plugin">
+  <div class="swiper-wrapper">
+    {% for id, photo in data %}
+      <div class="swiper-slide">
+        <img class="swiper-image" src="{{ photo.small }}">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}

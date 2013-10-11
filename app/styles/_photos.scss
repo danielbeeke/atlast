@@ -1,0 +1,9 @@
+.photos-plugin {
+  margin-left: -20px;
+  margin-right: -20px;
+  height: 150px;
+
+  .swiper-slide + .swiper-slide {
+    margin-left: 10px;
+  }
+}

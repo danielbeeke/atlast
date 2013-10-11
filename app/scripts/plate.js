@@ -95,7 +95,7 @@
 
   }
 
-  plate.prototype.hide = function (e, callback) {
+  plate.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
     $('html, body').animate({ scrollTop: "0px" });
@@ -188,13 +188,12 @@
     }
   }
 
-  plate.prototype.hideplate = function (callback) {
+  plate.prototype.hideplate = function () {
     var that = this
     this.$element.hide()
     this.$element.removeClass('plate-sticky-header')
     this.$element.find('.plate-content').css('padding-top', 0)
     this.$element.trigger('hidden.bs.plate')
-    calback()
   }
 
 
