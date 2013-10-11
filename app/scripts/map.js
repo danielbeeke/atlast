@@ -4,12 +4,15 @@ define(['twigloader','leaflet'], function (twigloader, L) {
 
     var map = {
       init: function () {
+        var instance = JSON.parse(localStorage.getItem('instance'))
+
         var atlastMap = L.map('map', {
           attributionControl: false,
-          zoomControl: false
+          zoomControl: false,
+          maxBounds: [instance.mapBounds.topLeft, instance.mapBounds.bottomRight]
         }).setView([51.505, -0.09], 13);
 
-        L.tileLayer('http://{s}.tile.cloudmade.com/d4fc77ea4a63471cab2423e66626cbb6/997/256/{z}/{x}/{y}.png', {
+        L.tileLayer(instance.mapUrl, {
             maxZoom: 18
         }).addTo(atlastMap);
       }

@@ -1,0 +1,8 @@
+<ul class="nav nav-pills nav-stacked">
+  {% for menuItem in menu %}
+    <li><a
+    {% for key, value in menuItem.attributes %}
+      {{ key }}="{{ value }}" {% endfor %}
+    >{{ menuItem.title }}</a></li>
+  {% endfor %}
+</ul>

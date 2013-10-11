@@ -39,9 +39,34 @@ define(['twigloader'], function (twigloader) {
           success: function(json) {
             var currentTimestamp = Math.round(new Date().getTime() / 1000)
             localStorage.setItem('timestamp', currentTimestamp)
-            localStorage.setItem('cache', JSON.stringify(json))
+
+            $.each(json, function (key, object) {
+              localStorage.setItem(key, JSON.stringify(object))
+            });
 
             $('#main').html(twigloader.get('index'))
+            var menu = JSON.parse(localStorage.getItem('menu'))
+            var menuRendered = twigloader.get('menu', {menu: menu})
+
+            var menuModal = twigloader.get('modal', {
+              id: 'menu',
+              content: menuRendered,
+              title: 'Menu'
+            })
+
+            $('body').append(menuModal)
+
+            Atlast = {};
+            Atlast.behaviors = {};
+
+            // Execute additional plugins.
+            var plugins = JSON.parse(localStorage.getItem('js'))
+
+            eval(plugins)
+
+            $.each(Atlast.behaviors, function (key, behavior) {
+              behavior.attach()
+            });
 
             callback()
 
