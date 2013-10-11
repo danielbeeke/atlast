@@ -98,6 +98,8 @@
   plate.prototype.hide = function (e) {
     if (e) e.preventDefault()
 
+    $('html, body').animate({ scrollTop: "0px" });
+
     e = $.Event('hide.bs.plate')
 
     this.$element.trigger(e)

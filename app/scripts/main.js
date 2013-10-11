@@ -68,8 +68,7 @@ require.config({
         }
     },
     atlast: {
-        slug: 'admin1',
-        mapUrl: 'http://{s}.tile.cloudmade.com/d4fc77ea4a63471cab2423e66626cbb6/997/256/{z}/{x}/{y}.png'
+        slug: 'henk-jansen',
     }
 });
 

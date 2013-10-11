@@ -15,6 +15,37 @@ define(['twigloader','leaflet'], function (twigloader, L) {
         L.tileLayer(instance.mapUrl, {
             maxZoom: 18
         }).addTo(atlastMap);
+
+        var locations = JSON.parse(localStorage.getItem('locations'))
+
+        // Put the locations on the map.
+        $.each(locations, function (id, location) {
+          L.geoJson(location.geojson, {
+              onEachFeature: function (feature, layer) {
+                var locationIcon = L.divIcon({
+                  className: 'atlast-icon',
+                  html: twigloader.get('icon', {
+                    title: location.title,
+                    icon: location.icon,
+                  })
+                });
+
+                layer.setIcon(locationIcon)
+
+                layer.on('click', function(e) {
+                  $('#plate').plate('hide').remove()
+
+                  $('body').append(twigloader.get('plate', {
+                    title: location.title,
+                    content: location.content,
+                  }))
+
+                  $('#plate').plate('show')
+                });
+              }
+          }).addTo(atlastMap);
+        });
+
       }
     }
 
