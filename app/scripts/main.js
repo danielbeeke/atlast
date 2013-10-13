@@ -66,6 +66,9 @@ require.config({
         },
         bootstrap: {
             deps: ['jquery', 'twigloader', 'bootstrapModal', 'once', 'plate', 'swiper']
+        },
+        combiner: {
+            deps: ['jquery', 'twigloader', 'bootstrapModal', 'once', 'plate']
         }
     },
     atlast: {
