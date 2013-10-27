@@ -144,17 +144,17 @@
     }
   }
 
-  // plate.prototype.resize = function () {
-  //   if (this.isExpanded) {
-  //     $('html, body').animate({ scrollTop: "0px" });
-  //   }
-  //   else {
-  //     var pixelsToScroll = parseInt($('.plate-dialog', this.$element).css('margin-top'))
-  //     $('html, body').animate({ scrollTop: pixelsToScroll + "px" });
-  //   }
+  plate.prototype.resize = function () {
+    if (this.isExpanded) {
+      $('html, body').animate({ scrollTop: "0px" });
+    }
+    else {
+      var pixelsToScroll = parseInt($('.plate-dialog', this.$element).css('margin-top'))
+      $('html, body').animate({ scrollTop: pixelsToScroll + "px" });
+    }
 
-  //   return false;
-  // }
+    return false;
+  }
 
   plate.prototype.watchTop = function () {
     var that = this;
