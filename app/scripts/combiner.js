@@ -6,7 +6,7 @@ define(['jquery', 'twigloader'], function ($, twigloader) {
       hideMenu: function () {
         $('#menu').modal('hide')
       },
-      showPlate: function(data) {
+      showPlate: function(data, callback) {
         var time = 0
         if ($('.plate:visible').length) { time = 400 }
         $('.plate').plate('hide')
@@ -16,6 +16,8 @@ define(['jquery', 'twigloader'], function ($, twigloader) {
             $('body').append(twigloader.get('plate', data))
           }
           $('#' + data.id).plate('show')
+
+          if (typeof(callback) == 'function') callback()
         }, time)
       }
     }

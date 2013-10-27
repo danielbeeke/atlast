@@ -1,9 +1,9 @@
 {% if data %}
 <div class="swiper-container photos-plugin">
   <div class="swiper-wrapper">
-    {% for id, photo in data %}
+    {% for photo in data %}
       <div class="swiper-slide">
-        <img class="swiper-image" title="{{ photo.title }}" data-large="{{ photo.large }}" src="{{ photo.small }}">
+        <img id="photos-photo-{{ photo.id }}" data-id="{{ photo.id }}" class="swiper-image" title="{{ photo.title }}" data-large="{{ photo.large }}" src="{{ photo.small }}">
       </div>
     {% endfor %}
   </div>

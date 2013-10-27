@@ -22,6 +22,8 @@ define(['twigloader','leaflet', 'combiner'], function (twigloader, L, combiner) 
         // Get all locations from the local storage.
         var locations = JSON.parse(localStorage.getItem('locations'))
 
+        var totalBounds = new L.LatLngBounds()
+
         // Put the locations on the map.
         $.each(locations, function (id, location) {
           L.geoJson(location.geojson, {
@@ -41,13 +43,7 @@ define(['twigloader','leaflet', 'combiner'], function (twigloader, L, combiner) 
 
                 // Click handler for markers.
                 layer.on('click', function(e) {
-                  combiner.showPlate({
-                    id: 'location-' + location.id,
-                    title: location.title,
-                    content: location.content,
-                    color: location.color,
-                    icon: location.icon
-                  })
+                  var content = location.content
 
                   // Attach plugins.
                   // These plugins define javascript on the serverside.
@@ -55,20 +51,30 @@ define(['twigloader','leaflet', 'combiner'], function (twigloader, L, combiner) 
                   if (location.plugins) {
                     $.each(location.plugins, function (plugin, data) {
                       var pluginContent = twigloader.get(plugin, { data: data })
-                      $('.plate-body').append(pluginContent)
+                      content = content + pluginContent
                     });
                   }
 
-                  // Let those js plugins attach to our trigger.
-                  $('body').trigger('plate_new_content', [location]);
-
-                  // Show the plate.
-                  $('#plate').plate('show')
+                  combiner.showPlate({
+                    id: 'location-' + location.id,
+                    title: location.title,
+                    content: content,
+                    color: location.color,
+                    icon: location.icon
+                  }, function () {
+                    // Let those js plugins attach to our trigger.
+                    $('body').trigger('plate_new_content', [$('#location-' + location.id), location]);
+                  })
                 });
+
+                // Add the current marker to the total bounds.
+                totalBounds.extend(layer._latlng)
               }
           }).addTo(atlastMap);
         });
 
+        // Fit to all map markers on load.
+        atlastMap.fitBounds(totalBounds)
       }
     }
 

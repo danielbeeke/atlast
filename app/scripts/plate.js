@@ -26,7 +26,6 @@
   var plate = function (element, options) {
     this.options   = options
     this.$element  = $(element)
-    this.$backdrop =
     this.isShown   = null
     this.isExpanded   = null
 
@@ -34,9 +33,8 @@
   }
 
   plate.DEFAULTS = {
-      backdrop: true
-    , keyboard: true
-    , show: true
+    keyboard: true,
+    show: true
   }
 
   plate.prototype.toggle = function (_relatedTarget) {
@@ -69,9 +67,6 @@
 
     that.$element.show()
 
-    var windowMinusPlateHeader = $(window).height() - $('.plate-header', that.$element).outerHeight()
-
-    $('.plate-dialog', that.$element).css('margin-top', windowMinusPlateHeader)
 
     if (transition) {
       that.$element[0].offsetWidth // force reflow
@@ -84,6 +79,8 @@
     that.enforceFocus()
 
     var e = $.Event('shown.bs.plate', { relatedTarget: _relatedTarget })
+
+    this.position()
 
     transition ?
       that.$element.find('.plate-dialog') // wait for plate to slide in
@@ -147,44 +144,46 @@
     }
   }
 
-  plate.prototype.resize = function () {
-    if (this.isExpanded) {
-      $('html, body').animate({ scrollTop: "0px" });
-    }
-    else {
-      var pixelsToScroll = parseInt($('.plate-dialog', this.$element).css('margin-top'))
-      $('html, body').animate({ scrollTop: pixelsToScroll + "px" });
-    }
+  // plate.prototype.resize = function () {
+  //   if (this.isExpanded) {
+  //     $('html, body').animate({ scrollTop: "0px" });
+  //   }
+  //   else {
+  //     var pixelsToScroll = parseInt($('.plate-dialog', this.$element).css('margin-top'))
+  //     $('html, body').animate({ scrollTop: pixelsToScroll + "px" });
+  //   }
 
-    return false;
-  }
+  //   return false;
+  // }
 
   plate.prototype.watchTop = function () {
     var that = this;
     if (this.isShown) {
-      $(window).on('scroll', $.proxy(function (e) {
-
-        var plateMarginTop = parseInt($('.plate-dialog', this.$element).css('margin-top'))
-
-        if($(window).scrollTop() >= plateMarginTop) {
-          this.isExpanded = true
-          this.$element.addClass('plate-sticky-header')
-          this.$element.find('.plate-content').css('padding-top', $('.plate-header', that.$element).outerHeight())
-        }
-        else {
-          this.isExpanded = false
-          this.$element.removeClass('plate-sticky-header')
-          this.$element.find('.plate-content').css('padding-top', 0)
-        }
-      }, this))
-
-      $(window).on('resize', $.proxy(function (e) {
-        var windowMinusPlateHeader = $(window).height() - $('.plate-header', that.$element).outerHeight()
-        $('.plate-dialog', that.$element).css('margin-top', windowMinusPlateHeader)
+      $(window).on('scroll resize', $.proxy(function (e) {
+        this.position()
       }, this))
 
     } else if (!this.isShown) {
-      $(window).off('scroll').off('resize')
+      $(window).off('scroll resize')
+    }
+  }
+
+  plate.prototype.position = function () {
+    var that = this
+    var windowMinusPlateHeader = $(window).height() - $('.plate-header', that.$element).outerHeight()
+    $('.plate-dialog', that.$element).css('margin-top', windowMinusPlateHeader)
+
+    var plateMarginTop = parseInt($('.plate-dialog', this.$element).css('margin-top'))
+
+    if($(window).scrollTop() >= plateMarginTop) {
+      this.isExpanded = true
+      this.$element.addClass('plate-sticky-header')
+      this.$element.find('.plate-content').css('padding-top', $('.plate-header', that.$element).outerHeight())
+    }
+    else {
+      this.isExpanded = false
+      this.$element.removeClass('plate-sticky-header')
+      this.$element.find('.plate-content').css('padding-top', 0)
     }
   }
 
