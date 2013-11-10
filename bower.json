@@ -9,7 +9,9 @@
     "font-awesome": "~3.2.1",
     "jquery-once": "~1.2.6",
     "owlcarousel": "*",
-    "swiper": "*"
+    "swiper": "*",
+    "leaflet": "*",
+    "twig.js": "*"
   },
   "devDependencies": {}
 }
